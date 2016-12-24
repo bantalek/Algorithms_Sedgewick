@@ -14,10 +14,13 @@ class BitonicSearch {
       let candidate = null;
       let min;
       let max;
-    if(maximum === 'inc' || maximum === 'dec' || !maximum) {
+    if (maximum === 'inc' || !maximum) {
       min = 0;
       max = array.length - 1;
-    } else if(target < array[maximum]) {
+    } else if (maximum === 'dec') {
+      max = 0;
+      min = array.length - 1;
+    } else if (target < array[maximum]) {
       min = 0;
       max = maximum
     } else if (target > array[maximum]) {
@@ -32,7 +35,7 @@ class BitonicSearch {
         if (array[candidate] === target) {
           return true;
         }
-        if(maximum === 'dec')  {
+        if (maximum === 'dec')  {
           if (array[candidate] < target) {
             min = candidate - 1;
           }
@@ -57,10 +60,10 @@ class BitonicSearch {
     let max = array.length - 1;
     let onSlope = true;
     let candidate = null;
-    if(array[min + 1] < array[min]) {
+    if (array[min + 1] < array[min]) {
       return 'inc';
     }
-    if(array[max] > array[max - 1]) {
+    if (array[max] > array[max - 1]) {
       return 'dec'
     }
     while (onSlope) {
@@ -76,7 +79,6 @@ class BitonicSearch {
     return candidate;
   }
 }
-
 
 // bitonic increasing / deacreasing example
 const test = new BitonicSearch([1, 4, 6, 8, 3, -2]);
