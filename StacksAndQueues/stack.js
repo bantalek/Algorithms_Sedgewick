@@ -19,7 +19,8 @@ class Stack {
   size() {
     return this.size;
   }
-  top() {
+  peek() {
+    if(this.isEmpty()) { return null; }
     return this.stack[this.size - 1];
   }
 }

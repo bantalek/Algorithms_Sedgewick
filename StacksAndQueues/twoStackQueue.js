@@ -60,15 +60,3 @@ class twoStackQ {
   }
 
 }
-
-
-/*
-step 1
-[]
-step 2 push 1 push 2 push 3
-[ 3 2 1 ]
-step 3 pop
-1
-[ 3 2 ]
-step 4 push 4
-[ 4 3 2 ]
