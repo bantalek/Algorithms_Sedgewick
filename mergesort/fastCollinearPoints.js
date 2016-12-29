@@ -1,7 +1,7 @@
 /*
  * Adapted from Algorithms, 4th Edition by Robert Sedgewick
  *
- * BRUTE FORCE COLLINEAR POINTS
+ * PERFORMANT COLLINEAR POINTS
  *
  * Write a program BruteCollinearPoints that examines 4 points at a time and
  * checks whether they all lie on the same line segment, returning all such
@@ -34,10 +34,11 @@ let fs;
 if (typeof(document) === 'undefined') {
   Point = require('./Point').Point;
   LineSegment = require('./LineSegment').LineSegment;
+  mergesort = require('./augmentedMergesort').mergesort;
   fs = require('fs');
 }
 
-class BruteCollinearPoints {
+class FastCollinearPoints {
   constructor(data) {
     this.points = [];
     this.lineSegments = [];
@@ -64,8 +65,27 @@ class BruteCollinearPoints {
     let dy = p.y - q.y;
     return Math.sqrt(dx * dx + dy * dy);
   }
+
+  shareIntersection() {
+    const a = segment[1];
+    const b = segment[0];
+
+  }
+
   fast() {
-    
+    const points = this.points;
+    const slopes = [];
+    for (let i = 0; i < points.length - 1; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        let a = points[i];
+        let b = points[j];
+        slopes[i] = [a.slopeTo(b), a, b];
+      const sortedSlopes = mergesort(slopes, 0, slopes.length - 1, e => e[0]);
+      // console.log('sortedSlopes', sortedSlopes)
+      const lowCoord = sortedSlopes
+      console.log(sortedSlopes)
+      }
+    }
   }
 
   // brute() {
@@ -82,7 +102,6 @@ class BruteCollinearPoints {
   //         const slopejk = points[j].slopeTo(points[k]);
   //         if (slopeij === slopejk) {
   //           candidate.push(points[k])
-
   //           /*
   //            * The two slopes between p and q, p and r, are
   //            * equal, therefore p, q, and r are collinear. Create a line
@@ -115,7 +134,6 @@ class BruteCollinearPoints {
   //           slopes.push(slopeij);
   //           index.push(longestCandidate[0], longestCandidate[1])
   //           candidates.push(longestCandidate);
-            
   //         }
   //       }
   //       // console.log(candidateCount, 'candidateCount')
@@ -146,8 +164,8 @@ class BruteCollinearPoints {
 }
 
 if (typeof(document) === 'undefined' && !module.parent) {
-  const data = fs.readFileSync('../../input/mergesort/input9.txt', 'utf-8');
-  const bcp = new BruteCollinearPoints(data);
-  bcp.brute();
-  bcp.printLineSegments();
+  const data = fs.readFileSync('../input/mergesort/input6.txt', 'utf-8');
+  const fcp = new FastCollinearPoints(data);
+  fcp.fast();
+  fcp.printLineSegments();
 }

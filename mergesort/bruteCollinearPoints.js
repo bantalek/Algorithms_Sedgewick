@@ -79,7 +79,6 @@ class BruteCollinearPoints {
           const slopejk = points[j].slopeTo(points[k]);
           if (slopeij === slopejk) {
             candidate.push(points[k])
-
             /*
              * The two slopes between p and q, p and r, are
              * equal, therefore p, q, and r are collinear. Create a line
@@ -89,8 +88,6 @@ class BruteCollinearPoints {
         }
         if (candidate.length > 3) {
           const longestCandidate = candidate.reduce((a, b, i) => {
-            // console.log(a)
-          // console.log(a, i)
             if (i === 1) {
               console.log([a, b], i)
               if (a.compareTo(b) === 1) {
@@ -107,7 +104,6 @@ class BruteCollinearPoints {
           });
           const checkPointHigh = index.indexOf(longestCandidate[0]) < 0;
           const checkPointLow = index.indexOf(longestCandidate[1]) < 0;
-          // console.log(checkPointHigh, checkPointLow)
           if (slopes.indexOf(slopeij) === -1 && checkPointLow && checkPointHigh) {
             slopes.push(slopeij);
             index.push(longestCandidate[0], longestCandidate[1])
@@ -115,15 +111,8 @@ class BruteCollinearPoints {
             
           }
         }
-        // console.log(candidateCount, 'candidateCount')
       }
     }
-    // console.log('candidates', candidates.length)
-    // const longestCandidates = candidates.map((candidateArray) => {
-    //   // console.log(candidateArray.length)
-    //   return candidateArray
-    // })
-    // console.log('longest candidates', longestCandidates)
     candidates.forEach((candidate) => {
       let newLine = new LineSegment(candidate[0], candidate[1]);
       this.lineSegments.push(newLine);
