@@ -25,6 +25,7 @@
         const canvas = document.getElementById('graph');
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         const contents = e.target.result;
         const bcp = new BruteCollinearPoints(contents);
         bcp.brute();
