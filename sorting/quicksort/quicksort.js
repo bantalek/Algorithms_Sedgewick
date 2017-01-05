@@ -36,7 +36,7 @@ class Quicksort {
     }
     // swap the partition into the center of the balance array
     [array[low], array[j]] = [array[j], array[low]];
-    return the center partition value;
+    // return the balance partition value;
     return j;
   }
   sort(array, low, high) {

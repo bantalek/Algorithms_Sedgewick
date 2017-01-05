@@ -11,15 +11,15 @@ const Union = function(a) {
 }
 
 Union.prototype.root = function(int) {
-  let temp = int;
-  while (this.ids[temp] !== this.integers[temp]) {
-    while (this.id[temp] !== this.id[this.id[temp]]) {
+  let i = int;
+  while (this.ids[i] !== this.integers[i]) {
+    while (this.id[i] !== this.id[this.id[i]]) {
       // implementation of path compression
-      this.id[temp] = this.id[this.id[temp]];
+      this.id[i] = this.id[this.id[i]];
     }
-    temp = this.ids[temp]
+    i = this.ids[i]
   }
-  return temp;
+  return i;
 }
 
 Union.prototype.isUnion = function(intA, intB) {
