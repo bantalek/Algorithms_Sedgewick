@@ -19,9 +19,9 @@ class BinarySearchTree {
     }
     let currentNode = this.root;
     let node = this.Node(e)
-    // while you are below the height of the tree
+    // while below the height of the tree
     while (currentNode !== null) {
-      // if value to left is greater than e find a position on the left for e
+      // find a position on the left for e if value is greater
       if (e < currentNode.left)  {
         if (currentNode.left === null) {
           currentNode.left = node;
@@ -29,7 +29,7 @@ class BinarySearchTree {
         } else {
           currentNode = currentNode.left;
         }
-      // otherwise find a position on the right branch for e
+      // find a position on the right branch for e
       } else if (currentNode.right === null) {
         currentNode.right = node;
         break;

@@ -50,7 +50,7 @@ class Heap {
           k = 2*k;
         } else {
           [this.q[k], this.q[2*k+1]] = [this.q[2*k+1], this.q[k]];
-          k = 2*k + 1;
+          k = 2*k+1;
         }
       } else {
         // Return because the parent node is larger than its two children
