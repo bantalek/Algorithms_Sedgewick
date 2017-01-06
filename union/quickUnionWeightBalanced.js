@@ -1,17 +1,14 @@
-const Union = function(a) {
-  this.integers = a.map(function(e) {
-    return e;
-  })
-  this.ids = a.map(function(e) {
-    return e;
-  })
+const Union = (a) => {
+  this.integers = a.slice();
+  this.ids = a.slice();
   this.sz = a.map(function(e) {
     return 1;
   })
 }
 
-Union.prototype.root = function(int) {
+Union.prototype.root = (int) => {
   let i = int;
+
   while (this.ids[i] !== this.integers[i]) {
     while (this.id[i] !== this.id[this.id[i]]) {
       // implementation of path compression
@@ -19,21 +16,24 @@ Union.prototype.root = function(int) {
     }
     i = this.ids[i]
   }
+
   return i;
 }
 
-Union.prototype.isUnion = function(intA, intB) {
+Union.prototype.isUnion = (intA, intB) => {
   return this.ids[this.root(intA)] === this.ids[this.root(intB)];
 }
 // improving union join by checking size of tree at each id and 
 // ensuring that the root of the larger tree is prioritized
 // this reduces tree lookup time. 
-Union.prototype.union = function(intA, intB) {
+Union.prototype.union = (intA, intB) => {
   let i = this.root(intA);
   let j = this.root(intB);
+
   if( i === j) {
     return;
   }
+
   if(this.sz[i] < this.sz[j]) {
     this.ids[i] = this.ids[j];
     this.sz[j] += this.sz[i];
@@ -41,6 +41,7 @@ Union.prototype.union = function(intA, intB) {
     this.ids[j] = this.ids[i];
     this.sz[i] += this.sz[j];
   }
+  
   return {integers: this.integers, ids: this.ids, size: this.sz};
 }
 

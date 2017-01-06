@@ -4,14 +4,14 @@
 // one of the elements id
 // create a command that checks if two components are joined
 
-const Union = function(a) {
-  this.integers = a.map(function(e) {
-    return { integer: e, id: e }
+const Union = (a) => {
+  this.integers = a.map((e) => { integer: e, id: e };
   })
 }
 
-Union.prototype.union = function(intA, intB) {
+Union.prototype.union = (intA, intB) => {
   let test = this.integers;
+  
   test = test.map((e) => {
     if(e.id === test[intB].id) {
       return {integer: e.integer, id: test[intA].id}

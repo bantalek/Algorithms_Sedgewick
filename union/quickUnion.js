@@ -1,27 +1,23 @@
-const Union = function(a) {
-  this.integers = a.map(function(e) {
-    return e;
-  })
-  this.ids = a.map(function(e) {
-    return e;
-  })
+const Union = (a) => {
+  this.integers = a.slice();
+  this.ids = a.slice();
 }
 
-Union.prototype.root = function(int) {
-  let temp = int;
+Union.prototype.root = (int) => {
+  const temp = int;
   while (this.ids[temp] !== this.integers[temp]) {
     temp = this.ids[temp]
   }
   return temp;
 }
 
-Union.prototype.isUnion = function(intA, intB) {
-  return this.ids[this.root(intA)] === this.ids[this.root(intB)];
-}
+Union.prototype.isUnion = (intA, intB) => this.ids[this.root(intA)] === this.ids[this.root(intB)];
 
-Union.prototype.union = function(intA, intB) {
-  let i = this.ids[this.root(intA)];
+Union.prototype.union = (intA, intB) => {
+  const i = this.ids[this.root(intA)];
+
   this.ids[this.root(intB)] = i;
+
   return {integers: this.integers, ids: this.ids};
 }
 
