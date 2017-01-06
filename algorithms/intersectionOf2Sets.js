@@ -20,7 +20,7 @@ const compareCoords = (coord1, coord2) => {
     return -1;
   }
   if (y1 > y2) {
-    return 1
+    return 1;
   }
   if (y1 === y2 && x1 === x2) {
     return 0;
@@ -29,28 +29,35 @@ const compareCoords = (coord1, coord2) => {
 // generate a random set of coordinates
 const getRandomCoords = (length) => {
   const result = [];
+
   for (let i = 0; i < length; i++) {
-    const r1 = Math.floor(Math.random() * length)
-    const r2 = Math.floor(Math.random() * length)
+    const r1 = Math.floor(Math.random() * length);
+    const r2 = Math.floor(Math.random() * length);
+
     result.push([r1, r2]);
   };
+
   return result;
 }
 // apply shellsort with 3h + 1 interval and a callback compare function 
 const shellSort = (arr, compareFunc) => {
   const interval  = (int) => 3 * int + 1;
   let h = 1
+
   while (h < arr.length / 3) { h = interval(h); }
   while (h >= 1) {
     for (let i = h; i < arr.length; i++) {
       for (let j = i; j >= h; j -= h) {
         if (compareFunc(arr[j], arr[j - h]) === -1) {
+
           [arr[j - h], arr[j]] = [arr[j], arr[j - h]];
+
         }
       }
     }
       h = Math.floor(h / 3);
   }
+  
   return arr;
 }
 
@@ -58,12 +65,14 @@ const shellSort = (arr, compareFunc) => {
 const intersectionOfSets = (set1, set2, compareFunc) => {
   const sortedSet1 = shellSort(set1, compareFunc);
   const sortedSet2 = shellSort(set2, compareFunc);
+
   let i = 0;
   let j = 0;
   let count = 0;
+
   while (i < sortedSet1.length && j < sortedSet2.length) {
     if (compareCoords(sortedSet1[i], sortedSet2[j]) === -1) {
-      i++
+      i++;
     } else if (compareCoords(sortedSet1[i], sortedSet2[j]) === 1) {
       j++;
     } else if (compareCoords(sortedSet1[i], sortedSet2[j]) === -0) {
@@ -72,6 +81,7 @@ const intersectionOfSets = (set1, set2, compareFunc) => {
       i++;
     }
   }
+
   return count;
 }
 

@@ -14,7 +14,7 @@ class eggDrop0 {
     let T = 0;
     while(T <= this.n) {
       if(T >= eggDurability) {
-        return T
+        return T;
       }
       T++;
     }
@@ -24,7 +24,7 @@ class eggDrop0 {
   }
 }
 
-const eggDropV0 = new eggDrop0(50)
+const eggDropV0 = new eggDrop0(50);
 console.log(eggDropV1.findT());
 
 // Version 1: ∼1lgn eggs and ∼1lgn tosses.

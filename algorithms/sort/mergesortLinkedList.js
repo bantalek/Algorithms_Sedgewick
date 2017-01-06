@@ -1,10 +1,9 @@
 class MergeSortLinkedList {
   MergeList(a, b) {
     let result = null;
-    if (a == null)
-      return b;
-    if (b == null)
-      return a;
+
+    if (a == null) return b;
+    if (b == null) return a;
     if (a.data > b.data) {
       result = b;
       result.next = this.MergeList(a, b.next);
@@ -12,41 +11,47 @@ class MergeSortLinkedList {
       result = a;
       result.next = this.MergeList(a.next, b);
     }
+
     return result;
   }
 
   getLength(a) {
     let count = 0;
     let h = a;
+
     while (h !== null) {
       count++;
       h = h.next;
     }
+
     return count;
   }
 
   mergeSort(a) {
     let oldHead = a;
-    // find the length of the linkedlist
     let mid = this.getLength(a) / 2;
-    if (a.next === null)
-      return a;
-    // set one pointer to the beginning of the list and another at the next
-    // element after mid
+
+    if (a.next === null) return a;
+
     while (mid - 1 > 0) {
       oldHead = oldHead.next;
       mid--;
     }
-    let newHead = oldHead.next;// make newHead points to the beginning of the second half of the list
-    oldHead.next = null;// break the list
-    oldHead = a;// make one pointer points at the beginning of the first
-          // half of the list
+
+    let newHead = oldHead.next; // make newHead points to the beginning of the second half of the list
+    
+    oldHead.next = null; // break the list
+    oldHead = a;
+
     let t1 = this.mergeSort(oldHead);//make recursive calls 
     let t2 = this.mergeSort(newHead);
+    
     return this.MergeList(t1, t2); // merge the sorted lists
   }
+
   display(head) {
     let currnode = head;
+    
     while (currnode !== null) {
       console.log("->" + currnode.data);
       currnode = currnode.next;

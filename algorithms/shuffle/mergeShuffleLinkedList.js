@@ -24,17 +24,19 @@ class MergeSortLinkedList {
   getLength(a) {
     let count = 0;
     let h = a;
+
     while (h !== null) {
       count++;
       h = h.next;
     }
+
     return count;
   }
 
   mergeSort(a) {
     let oldHead = a;
-    // find the length of the linkedlist
     let mid = this.getLength(a) / 2;
+
     if (a.next === null)
       return a;
     // set one pointer to the beginning of the list and another at the next
@@ -43,23 +45,27 @@ class MergeSortLinkedList {
       oldHead = oldHead.next;
       mid--;
     }
-    let newHead = oldHead.next;// make newHead points to the beginning of the second half of the list
-    
-    oldHead.next = null;// break the list
 
-    oldHead = a;// make one pointer points at the beginning of the first
-          // half of the list
-    let t1 = this.mergeSort(oldHead);//make recursive calls 
+    let newHead = oldHead.next;// make newHead points to the beginning of the second half of the list
+
+    oldHead.next = null;// break the list
+    oldHead = a;// make one pointer points at the beginning of the first half of the list
+
+    let t1 = this.mergeSort(oldHead); 
     let t2 = this.mergeSort(newHead);
-    return this.MergeList(t1, t2); // merge the sorted lists
+
+    return this.MergeList(t1, t2);
   }
+
   display(head) {
     let string = ''
     let currnode = head;
+   
     while (currnode !== null) {
       console.log('->', currnode.data);
       currnode = currnode.next;
     }
+    
     return string;
   }
 }

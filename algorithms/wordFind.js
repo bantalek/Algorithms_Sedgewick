@@ -22,21 +22,22 @@ class wordfind {
     this.array = [];
     this.index = {};
     this.count = 0;
+
     // convert matrix into an array
-    for(let i = 0; i < m.length; i++) {
+    for (let i = 0; i < m.length; i++) {
       for (let j = 0; j < m[i].length; j++ ) {
+
         this.array.push(m[i][j]);
-        if(!this.index[m[i][j]]) {
+
+        if (!this.index[m[i][j]]) {
           this.index[m[i][j]] = [];
         }
+
         this.index[m[i][j]].push(this.count);
       }
     }
   }
-  
-  union() {
 
-  }
   isNeighbor(int) {
     if ((int + 1) % n === 0) { /*right*/
       const neighbors = [
