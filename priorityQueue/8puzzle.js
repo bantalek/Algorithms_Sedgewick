@@ -122,8 +122,8 @@
 const fs = require('fs');
 
 class Board {
-  constructor(board, n) {
-    this.n = n;
+  constructor(board) {
+    this.n = board.length;
     this.board = board.map((e=>e.map(e=>Number(e))));
     this.goal = [[1,2,3],[4,5,6],[7,8,0]];
   }
@@ -132,19 +132,38 @@ class Board {
     return this.n*this.n;
   }
 
+  equals(y) {
+    for (let i = 0; i < this.n; i++) {
+      for (let j = 0; j < this.n; j++) {
+        if (this.board[i][j] !== y.board[i][j]) return false;
+      }
+    }
+
+    return true;
+  }
 
   hamming() {
     const n = this.n;
-    let count = 0;
-
+    let count = 0
     for (let i = 0; i < this.n; i++) {
       for (let j = 0; j < this.n; j++) {
-        if (this.board[i][j] === this.goal[i][j])
+        if (this.board[i][j] !== this.goal[i][j])
           count++;
       }
     }
 
     return count;
+  }
+
+  string() {
+    let result = this.goal.map((e)=>'***').join('')+'\n';
+    for (let i = 0; i < this.n; i++) {
+      for (let j = 0; j < this.n; j++) {
+        result += ` ${this.board[i][j]} `;
+      }
+      result+='\n'
+    }
+      return ` ${result} `;
   }
 
   isGoal() {
@@ -162,7 +181,7 @@ class Board {
     } else {
       [twin[0][0], twin[0][1]] = [twin[0][1], twin[0][0]]
     }
-
+    twin = new Board(twin);
     return twin;
   }
 
@@ -195,7 +214,7 @@ class Board {
 
       neighbor[row + 1][col] = 0;
       neighbor[row][col] = temp;
-
+      neighbor = new Board (neighbor);
       neighbors.push(neighbor);
     }
 
@@ -205,6 +224,7 @@ class Board {
 
       neighbor[row][col + 1] = 0;
       neighbor[row][col] = temp;
+      neighbor = new Board (neighbor);
 
       neighbors.push(neighbor);
     }
@@ -215,6 +235,7 @@ class Board {
       
       neighbor[row - 1][col] = 0;
       neighbor[row][col] = temp;
+      neighbor = new Board (neighbor);
 
       neighbors.push(neighbor);
     }
@@ -225,6 +246,7 @@ class Board {
       
       neighbor[row][col - 1] = 0;
       neighbor[row][col] = temp;
+      neighbor = new Board (neighbor);
 
       neighbors.push(neighbor);
     }
@@ -253,8 +275,11 @@ const initBoard = (initBoard) => {
 
   this.data = null;
 
-  return new Board(board, n);
+  return new Board(board);
 }
 
-const firstBoard = initBoard('./8puzzle/puzzle3x3-15.txt');
-console.log(firstBoard.neighbors())
+module.exports = {
+  init: initBoard('./8puzzle/puzzle18.txt'),
+  Board,
+}
+
