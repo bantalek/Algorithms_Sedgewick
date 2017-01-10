@@ -1,4 +1,4 @@
-class Heap {
+class maximumPriorityQueue {
   constructor() {
     this.q = [];
     this.N = 0;
@@ -90,7 +90,7 @@ class Heap {
   }
 }
 
-let mpq = new Heap();
+let mpq = new maximumPriorityQueue();
 mpq.insert(5);
 mpq.insert(10);
 mpq.insert(15);

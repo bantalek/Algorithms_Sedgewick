@@ -1,10 +1,10 @@
-class Heap {
+class minimumPriorityQueue {
   constructor() {
     this.q = [];
     this.N = 0;
   }
   // create an empty queue or a new queue with given keys
-  maxPQ(a = []) {
+  minPQ(a = []) {
     this.q = a;
     this.N = a.length;
   }
@@ -12,12 +12,15 @@ class Heap {
   isEmpty() {
     return this.N === 0;
   }
-  max() {
-    return Math.max(...this.q)
+
+  min() {
+    return this.q[0];
   }
+
   size() {
     return this.q.length;
   }
+
   swim(k) {
     while (k > 1 && this.q[Math.floor(k/2)] > this.q[k]) {
      /*
@@ -28,6 +31,7 @@ class Heap {
      k = Math.floor(k / 2);
     }
   }
+
   sink(k, N = this.N) {
     while (2*k <= N) {
       /*
@@ -58,18 +62,21 @@ class Heap {
       }
     }
   }
+
   insert(e) {
     this.q[++this.N] = e;
     this.swim(this.N);
   }
-  deleteMax() {
-    let max = this.q[1];
+
+  deleteMin() {
+    let min = this.q[1];
     [this.q[1], this.q[this.N]] = [this.q[this.N], this.q[1]];
     this.N--;
     this.swim(1);
     this.q[this.N+1] = null;
-    return max;
+    return min;
   }
+  
   iterate (cb) {
     let j = 1;
     while (j <= this.N) {
@@ -79,12 +86,12 @@ class Heap {
   }
 }
 
-let mpq = new Heap();
+let mpq = new minimumPriorityQueue();
 mpq.insert(5);
 mpq.insert(10);
 mpq.insert(15);
 mpq.insert(2);
 mpq.insert(8);
-console.log(mpq.deleteMax());
-console.log(mpq.deleteMax());
+console.log(mpq.deleteMin());
+console.log(mpq.deleteMin());
 console.log(mpq.q);
