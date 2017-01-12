@@ -44,8 +44,10 @@ class BouncingBalls {
         if (yDir < 0.5) vy = speedY * -1;
 
         // if the ball is at the boundary, reverse its direction
-        if ((this.balls[i][0] + vx) < 0 + r || this.balls[i][0] > this.boundary - r) vx = -vx;
-        if ((this.balls[i][1] + vy) < 0 + r || this.balls[i][1] > this.boundary - r) vy = -vy;
+        if ((this.balls[i][0] + vx) < 0 + r || this.balls[i][0] > this.boundary - r)
+          vx = -vx;
+        if ((this.balls[i][1] + vy) < 0 + r || this.balls[i][1] > this.boundary - r)
+          vy = -vy;
 
         // increment each coordinate by the corresponding velocity and draw it
         this.balls[i][0] += vx;
