@@ -150,10 +150,10 @@ if (!module.parent) {
   test.put('c', 3)
   test.put('b', 2)
   test.put('e', 5)
-  // console.log('1', test.get('e'), test.get('c')); // 5 and 3
-  // console.log('2', test.contains('e'), test.contains('a')); // -1 and 0
-  // console.log('3', test.min(), test.max()); // 'a' and 'e'
-  // console.log('4', test.ceiling('b'), test.floor('b')); // 'c' and 'a'
+  console.log('1', test.get('e'), test.get('c')); // 5 and 3
+  console.log('2', test.contains('e'), test.contains('a')); // -1 and 0
+  console.log('3', test.min(), test.max()); // 'a' and 'e'
+  console.log('4', test.ceiling('b'), test.floor('b')); // 'c' and 'a'
 
   // test.delete('e');
   // test.delete('a');
@@ -161,24 +161,24 @@ if (!module.parent) {
   // test.delete('c');
   // test.delete('d');
 
-  // console.log(test.iterableKeys('b', 'd')) // ['b','c','d']
-  // console.log('5', test.get('e'), test.get('a')); // null and null
-  // console.log('6', test.contains('e'), test.contains('a')); // -1 and -1
-  // console.log('7', test.min(), test.max()); // 'a' and 'e'
-  // console.log('8', test.ceiling('b'), test.floor('b')); // 'c' and 'a'
+  console.log(test.iterableKeys('b', 'd')) // ['b','c','d']
+  console.log('5', test.get('e'), test.get('a')); // null and null
+  console.log('6', test.contains('e'), test.contains('a')); // -1 and -1
+  console.log('7', test.min(), test.max()); // 'a' and 'e'
+  console.log('8', test.ceiling('b'), test.floor('b')); // 'c' and 'a'
 
 
-  // test.delete('b');
-  // test.delete('c');
-  // test.delete('d');
-  // console.log('9', test.get('e'), test.get('a')); // 5 and 1
-  // test.deleteMin();
-  // test.deleteMax();
+  test.delete('b');
+  test.delete('c');
+  test.delete('d');
+  console.log('9', test.get('e'), test.get('a')); // 5 and 1
+  test.deleteMin();
+  test.deleteMax();
 
-  // console.log('10', test.get('e'), test.get('a')); // null and null
-  // console.log('11', test.contains('e'), test.contains('a')); // -1 and -1
-  // console.log('12', test.min(), test.max()); // 'a' and 'e'
-  // console.log('13', test.ceiling('b'), test.floor('b')); // 'c' and 'a'
+  console.log('10', test.get('e'), test.get('a')); // null and null
+  console.log('11', test.contains('e'), test.contains('a')); // -1 and -1
+  console.log('12', test.min(), test.max()); // 'a' and 'e'
+  console.log('13', test.ceiling('b'), test.floor('b')); // 'c' and 'a'
 }
 
 module.exports = {
