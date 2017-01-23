@@ -100,7 +100,12 @@ class BST {
     node.left = deleteMin(node.left);
     node.N = this.size(node.left) + this.size(node.right) + 1;
     return node;
-
+  }
+  deleteMax(node=this.root) {
+    if (node.right === null) return node.right;
+    node.right = deleteMax(node.right);
+    node.N = this.size(node.right) + this.size(node.left) + 1;
+    return node;
   }
 
   rank(key, node=this.root) {
