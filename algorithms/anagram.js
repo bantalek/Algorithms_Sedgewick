@@ -1,26 +1,28 @@
-//Given 
-//- A dictionary file
-//- An input word
+// Alternative to sorting solution
 
-//Find all words in the dictionary that are anagrams of the input word.
+// Given 
+// - A dictionary file
+// - An input word
 
-//Ex:
-//Dictionary:
-//- CAT
-//- FACT
-//- TAC
-//- ACT
-//- AT
+// Find all words in the dictionary that are anagrams of the input word.
 
-//Word:
-//- ACT
+// Ex:
+// Dictionary:
+// - CAT
+// - FACT
+// - TAC
+// - ACT
+// - AT
 
-//Output:
-//- ACT
-//- CAT
-//Given 
-//- A dictionary file
-//- An input word
+// Word:
+// - ACT
+
+// Output:
+// - ACT
+// - CAT
+// Given 
+// - A dictionary file
+// - An input word
 
 const anagram = (alist, target) => {
     // construct a dictionary to measure the content and frequency of target characters
